@@ -15,8 +15,8 @@ using namespace std;
 SDL_Window* window;
 SDL_Renderer* renderer;
 SDL_Event Event;
-SDL_Texture *background,*character, *bullet, *enemy, *enemy2;
-SDL_Rect rect_background,rect_character, rect_bullet, rect_enemy, rect_enemy2;
+SDL_Texture *background,*character, *bullet, *enemy, *enemy2, *obs;
+SDL_Rect rect_background,rect_character, rect_bullet, rect_enemy, rect_enemy2,rect_obs;
 
 int screen_width = 500;
 int screen_height= 250;
@@ -110,8 +110,16 @@ int main( int argc, char* args[] )
     rect_enemy2.w = w;
     rect_enemy2.h = h;
 
+    obs = IMG_LoadTexture(renderer, "obs.png");
+    SDL_QueryTexture(obs, NULL, NULL, &w, &h);
+    rect_enemy2.x = 0;
+    rect_enemy2.y = 100;
+    rect_enemy2.w = w;
+    rect_enemy2.h = h;
+
     list<Bullet*>bullets;
     list<Enemy*>enemies, enemies2;
+    list<obs*>obst;
     int frame=0;
 
     //Main Loop
